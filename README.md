@@ -1,4 +1,5 @@
 # weather-app
+    This is a simple weather app that allows users to check the current weather conditions for a specific city.
     User Interface:
         The app has a clean and responsive user interface contained within a card element.
         It includes a search input box and a button with a search icon for users to input a city name and initiate a search.
