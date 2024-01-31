@@ -10,13 +10,13 @@ body {
 }
 
 .card {
-    width: 45%;
-    max-width: 470%;
+    width: 90%;
+    max-width: 600px;
     background: linear-gradient(135deg, #393b3a, #5b548a);
     color: #fff;
-    margin: 100px auto 0;
+    margin: 50px auto 0;
     border-radius: 20px;
-    padding: 40px 35px;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -27,6 +27,7 @@ body {
     justify-content: space-between;
 }
 
+/* Styles for Search Input and Button */
 .search input {
     border: 0;
     outline: 0;
@@ -119,5 +120,50 @@ body {
     margin-top: 10px;
     display: none;
 }
+
+/* Media Query for Tablets and Desktops */
+@media (min-width: 768px) {
+    .card {
+        width: 70%;
+        padding: 40px 35px;
+    }
+}
+
+/* Media Query for Large Screens (Desktops) */
+@media (min-width: 1200px) {
+    .card {
+        width: 60%;
+    }
+}
+
+/* Media Query for Phones */
+@media (max-width: 767px) {
+    .card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .weather h1 {
+        font-size: 60px;
+    }
+
+    .weather h2 {
+        font-size: 35px;
+    }
+
+    .weekly-forecast {
+        margin-top: 10px;
+    }
+
+    .forecast-day {
+        margin: 0 5px;
+    }
+
+    .forecast-day img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
 
 
