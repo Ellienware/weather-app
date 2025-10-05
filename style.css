@@ -1,169 +1,215 @@
+/* ---------- Base Reset ---------- */
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ---------- Theme Colors ---------- */
+:root {
+  --bg-gradient: linear-gradient(135deg, #393b3a, #5b548a);
+  --text-color: #fff;
+  --input-bg: #ebfffc;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode {
+  --bg-gradient: linear-gradient(135deg, #e0e8f9, #c8d6ff);
+  --text-color: #222;
+  --input-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background: #222;
+  background: #222;
+  color: var(--text-color);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
+/* ---------- Card ---------- */
 .card {
-    width: 90%;
-    max-width: 600px;
-    background: linear-gradient(135deg, #393b3a, #5b548a);
-    color: #fff;
-    margin: 50px auto 0;
-    border-radius: 20px;
-    padding: 40px 20px;
-    text-align: center;
+  width: 90%;
+  max-width: 600px;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  margin: 50px auto 0;
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px var(--card-shadow);
+  transition: background 0.5s ease;
 }
 
+/* ---------- Header ---------- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+#theme-toggle img {
+  width: 28px;
+}
+
+/* ---------- Search ---------- */
 .search {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Styles for Search Input and Button */
 .search input {
-    border: 0;
-    outline: 0;
-    background: #ebfffc;
-    color: #555;
-    padding: 10px 25px;
-    height: 60px;
-    border-radius: 30px;
-    flex: 1;
-    margin-right: 16px;
-    font-size: 18px;
+  border: 0;
+  outline: 0;
+  background: var(--input-bg);
+  color: #555;
+  padding: 10px 25px;
+  height: 60px;
+  border-radius: 30px;
+  flex: 1;
+  margin-right: 16px;
+  font-size: 18px;
+  transition: background 0.3s ease;
 }
 
 .search button {
-    border: 0;
-    outline: 0;
-    background: #ebfffc;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+  border: 0;
+  outline: 0;
+  background: var(--input-bg);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.search button:hover {
+  transform: scale(1.1);
 }
 
 .search button img {
-    width: 16px;
+  width: 16px;
 }
 
+/* ---------- Weather ---------- */
 .weather-icon {
-    width: 170px;
-    margin-top: 30px;
+  width: 160px;
+  margin-top: 30px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .weather h1 {
-    font-size: 80px;
-    font-weight: 500;
+  font-size: 80px;
+  font-weight: 500;
 }
 
 .weather h2 {
-    font-size: 45px;
-    font-weight: 400;
-    margin-top: -10px;
+  font-size: 45px;
+  font-weight: 400;
+  margin-top: -10px;
 }
 
 .details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-top: 50px;
 }
 
 .col {
-    display: flex;
-    align-items: center;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
 
 .col img {
-    width: 40px;
-    margin-right: 10px;
+  width: 40px;
+  margin-right: 10px;
 }
 
-.humidity, .wind {
-    font-size: 28px;
-    margin-top: -6px;
+.humidity,
+.wind {
+  font-size: 28px;
+  margin-top: -6px;
 }
 
+/* ---------- Weekly Forecast ---------- */
 .weekly-forecast {
-    margin-top: 20px;
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
+  margin-top: 20px;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .forecast-day {
-    text-align: center;
-    margin: 0 10px;
-    display:inline-block;
+  text-align: center;
+  margin: 0 10px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px;
+  transition: transform 0.2s ease;
+}
+
+.forecast-day:hover {
+  transform: translateY(-4px);
 }
 
 .forecast-day img {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
+/* ---------- Error ---------- */
 .error {
-    text-align: left;
-    margin-left: 10px;
-    font-size: 14px;
-    margin-top: 10px;
-    display: none;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+  display: none;
+  color: #ff6b6b;
 }
 
-/* Media Query for Tablets and Desktops */
-@media (min-width: 768px) {
-    .card {
-        width: 70%;
-        padding: 40px 35px;
-    }
-}
-
-/* Media Query for Large Screens (Desktops) */
-@media (min-width: 1200px) {
-    .card {
-        width: 60%;
-    }
-}
-
-/* Media Query for Phones */
+/* ---------- Media Queries ---------- */
 @media (max-width: 767px) {
-    .card {
-        width: 90%;
-        padding: 30px 20px;
-    }
+  .card {
+    padding: 30px 20px;
+  }
 
-    .weather h1 {
-        font-size: 60px;
-    }
+  .weather h1 {
+    font-size: 60px;
+  }
 
-    .weather h2 {
-        font-size: 35px;
-    }
-
-    .weekly-forecast {
-        margin-top: 10px;
-    }
-
-    .forecast-day {
-        margin: 0 5px;
-    }
-
-    .forecast-day img {
-        width: 30px;
-        height: 30px;
-    }
+  .weather h2 {
+    font-size: 35px;
+  }
 }
+
 
 
 

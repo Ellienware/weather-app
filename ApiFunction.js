@@ -52,13 +52,13 @@ function setWeatherIcon(weatherMain) {
 
 async function displayWeeklyForecast(city) {
     const weeklyForecastContainer = document.querySelector(".weekly-forecast");
-    weeklyForecastContainer.innerHTML = ""; // Clear existing content
+    weeklyForecastContainer.innerHTML = "";
 
     const weeklyApiUrl = `https://api.openweathermap.org/data/2.5/forecast?units=metric&q=${city}&appid=${apiKey}`;
     const response = await fetch(weeklyApiUrl);
     const data = await response.json();
 
-    const dailyForecasts = data.list.filter((forecast, index) => index % 8 === 0); // Extract daily forecasts
+    const dailyForecasts = data.list.filter((forecast, index) => index % 8 === 0);
 
     dailyForecasts.forEach(day => {
         const dayDiv = document.createElement("div");
@@ -79,11 +79,20 @@ async function displayWeeklyForecast(city) {
         weeklyForecastContainer.appendChild(dayDiv);
     });
 
-    weeklyForecastContainer.style.display = "block"; // Show weekly forecast
+    weeklyForecastContainer.style.display = "block";
 }
 
 searchButton.addEventListener("click", () => {
-    const city = searchBox.value;
+    let city = searchBox.value.trim();
+
+    if (city === "") return; // prevent empty input
+
+    // Capitalize first letter of each word
+    city = city
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(" ");
+
     checkWeather(city);
-    displayWeeklyForecast(city); // Display weekly forecast when search button is clicked
+    displayWeeklyForecast(city);
 });

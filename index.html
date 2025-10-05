@@ -1,47 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather app</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="card">
-        <div class="search">
-            <input type="text" placeholder="Enter city name" spellcheck="false">
-            <button><img src="weather-app-img/images/search.png"></button>
-        </div>
-        <div class="error">
-            <p>City not found</p>
-        </div>
-        <div class="weather">
-            <img src="weather-app-img/images/rain.png" class="weather-icon">
-            <h1 class="temp">22°c</h1>
-            <h2 class="city">Johannesburg</h2>
-            <div class="weekly-forecast"></div>
-            <div class="details">
-                <div class="col">
-                    <img src="weather-app-img/images/humidity.png">
-                    <div>
-                        <p class="humidity">50%</p>
-                        <p>Humidity</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <img src="weather-app-img/images/wind.png">
-                    <div>
-                        <p class="wind">15 km/h</p>
-                        <p>Wind Speed</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="card">
+    <header class="app-header">
+      <h1>Weather App</h1>
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <img src="weather-app-img/images/moon.png" alt="Toggle theme" />
+      </button>
+    </header>
+
+    <!-- Search -->
+    <div class="search">
+      <input type="text" placeholder="Enter city name" spellcheck="false" />
+      <button><img src="weather-app-img/images/search.png" alt="Search icon" /></button>
     </div>
-    <script src="./ApiFunction.js"></script>
+
+    <!-- Error -->
+    <div class="error">
+      <p>City not found</p>
+    </div>
+
+    <!-- Weather Display -->
+    <div class="weather">
+      <img src="weather-app-img/images/clear.png" class="weather-icon" alt="Weather icon" />
+      <h1 class="temp">22°c</h1>
+      <h2 class="city">Johannesburg</h2>
+
+      <!-- Weekly Forecast -->
+      <div class="weekly-forecast"></div>
+
+      <!-- Details -->
+      <div class="details">
+        <div class="col">
+          <img src="weather-app-img/images/humidity.png" alt="Humidity" />
+          <div>
+            <p class="humidity">50%</p>
+            <p>Humidity</p>
+          </div>
+        </div>
+        <div class="col">
+          <img src="weather-app-img/images/wind.png" alt="Wind Speed" />
+          <div>
+            <p class="wind">15 km/h</p>
+            <p>Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./ApiFunction.js"></script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+    const icon = toggleBtn.querySelector("img");
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("light-mode");
+      icon.src = body.classList.contains("light-mode")
+        ? "weather-app-img/images/sun.png"
+        : "weather-app-img/images/moon.png";
+    });
+  </script>
 </body>
 </html>
-
-
-
-
